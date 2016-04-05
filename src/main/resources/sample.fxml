@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mario.Controller">
+    <columnConstraints>
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+    </rowConstraints>
+    <children>
+        <Pane prefHeight="378.0" prefWidth="612.0">
+         <children>
+            <Label layoutX="57.0" layoutY="63.0" text="Vaixells" />
+            <Label layoutX="232.0" layoutY="63.0" text="Mariners" />
+            <Label layoutX="424.0" layoutY="63.0" text="Capita" />
+            <Label layoutX="424.0" layoutY="162.0" text="Caps de colla" />
+            <ListView fx:id="listVaixells" layoutX="57.0" layoutY="86.0" prefHeight="200.0" prefWidth="149.0" />
+            <ListView fx:id="listMariners" layoutX="232.0" layoutY="86.0" prefHeight="200.0" prefWidth="149.0" />
+            <ListView fx:id="listColles" layoutX="424.0" layoutY="189.0" prefHeight="97.0" prefWidth="149.0" />
+            <Button fx:id="btndades" layoutX="55.0" layoutY="311.0" mnemonicParsing="false" onMouseClicked="#carregarDades" prefHeight="51.0" prefWidth="328.0" text="Carregar Dades" />
+            <TextField layoutX="424.0" layoutY="86.0" />
+            <Label layoutX="206.0" layoutY="16.0" prefHeight="38.0" prefWidth="218.0" text="Tripulacions de vaixells">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children></Pane>
+    </children>
+</GridPane>
