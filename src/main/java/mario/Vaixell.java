@@ -12,7 +12,7 @@ public class Vaixell {
     @Column(name = "nom")
     private String nom;
     @OneToMany
-    @JoinColumn(name = "tripulant_id")
+    @JoinColumn(name = "vaixell_id")
     private List<Tripulant> mariners;
 
     private static final long serialVersionUID = 1L;
