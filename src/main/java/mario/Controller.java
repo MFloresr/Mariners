@@ -1,6 +1,5 @@
 package mario;
 
-import javafx.beans.binding.StringBinding;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,12 +12,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Created by Vipi on 05/04/2016.
- */
 public class Controller {
     @FXML
     private TextField textCapita;
@@ -34,8 +31,13 @@ public class Controller {
     private String dato=null;
     private List<String> nombres = new ArrayList<String>();
     private List<String> apellidos = new ArrayList<String>();
-    private List<Tripulant> mariners = new ArrayList<Tripulant>();
     private Random rand = new Random();
+    private static final List<String> abecedario= Arrays.asList("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" );
+    private static final List<String> rango= Arrays.asList("Capita", "Mariner", "Cap de colla");
+    private int CANTIDADBARCOS = 100;
+    private List<String> dnis = new ArrayList<String>();
+    private List<String> matriculas = new ArrayList<String>();
+    private boolean esCapitan = false;
     @FXML
     public void carregarDades(Event event){
         FileChooser fichero= new FileChooser();
@@ -66,41 +68,55 @@ public class Controller {
                 }
             }
 
-            for(int x= 0 ;x<apellidos.size();x++){
-                //System.out.println(apellidos.get(x));
-            }
-
 
             EntityManagerFactory emf = Persistence.createEntityManagerFactory("MarinersUnit");
             EntityManager e = emf.createEntityManager();
 
-            for (int i = 0; i<10;i++){
-                String nombre= nombres.get(rand.nextInt(nombres.size()));
-                System.out.println(nombre+"_------");
-                String apellido= apellidos.get(rand.nextInt(apellidos.size()))+" "+ apellidos.get(rand.nextInt(apellidos.size()));
-                String nomCognoms = nombre+" "+apellido;
-                System.out.println(nomCognoms);
-
+            for(int i = 0;i<100;i++){
+                System.out.println();
             }
-            System.out.println("funcionando");
-            Tripulant tripulant = new Tripulant();
-            tripulant.setDni("34523L");
-            tripulant.setNom("Mario");
-            tripulant.setRang("Capita");
 
-            e.getTransaction().begin();
-            e.persist(tripulant);
-            e.getTransaction().commit();
 
-            mariners.add(tripulant);
-            Vaixell vaixell = new Vaixell();
-            vaixell.setMatricula("T4573T");
-            vaixell.setNom("Los tigres");
-            vaixell.setMariners(mariners);
+            while (CANTIDADBARCOS !=0){
+                String matricula = abecedario.get(rand.nextInt(abecedario.size()))+rand.nextInt(((99999 - 00000) + 1))+abecedario.get(rand.nextInt(abecedario.size()))+abecedario.get(rand.nextInt(abecedario.size()))+abecedario.get(rand.nextInt(abecedario.size()));
+                if(!matriculas.contains(matricula)){
+                    String nombreBarco = nombres.get(rand.nextInt(nombres.size()))+"_"+nombres.get(rand.nextInt(nombres.size()));
+                    List<Tripulant> mariners = new ArrayList<Tripulant>();
+                    int tripulantes = rand.nextInt(8)+3;
+                    while(tripulantes !=0) {
+                        String dni = rand.nextInt(((99999 - 00000) + 1)) + abecedario.get(rand.nextInt(abecedario.size()));
+                        String nombre = nombres.get(rand.nextInt(nombres.size())) + " " + apellidos.get(rand.nextInt(apellidos.size())) + apellidos.get(rand.nextInt(apellidos.size()));
+                        String rang = rango.get(rand.nextInt(rango.size()));
+                      //  int capita = 0;
+                      //  if(rang.contains("Capita")){
+                       //     capita++;
+                      //  }
 
-            e.getTransaction().begin();
-            e.persist(vaixell);
-            e.getTransaction().commit();
+                        if(!dnis.contains("dni")){// //capita == 1){
+                            Tripulant tripulant = new Tripulant();
+                            tripulant.setDni(dni);
+                            tripulant.setNom(nombre);
+                            tripulant.setRang(rang);
+
+                            e.getTransaction().begin();
+                            e.persist(tripulant);
+                            e.getTransaction().commit();
+                            mariners.add(tripulant);
+                            tripulantes--;
+
+                        }
+                    }
+                    Vaixell vaixell = new Vaixell();
+                    vaixell.setMatricula(matricula);
+                    vaixell.setNom(nombreBarco);
+                    vaixell.setMariners(mariners);
+
+                    e.getTransaction().begin();
+                    e.persist(vaixell);
+                    e.getTransaction().commit();
+                    CANTIDADBARCOS--;
+                }
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
