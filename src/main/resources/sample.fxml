@@ -35,7 +35,7 @@
                </font>
             </Label>
             <Button fx:id="btnimportar" layoutX="228.0" layoutY="313.0" mnemonicParsing="false" onMouseClicked="#importarDatos" prefHeight="51.0" prefWidth="175.0" text="Importar" />
-            <Button fx:id="btnexportar" layoutX="416.0" layoutY="313.0" mnemonicParsing="false" onMouseClicked="#exportarDatos" prefHeight="51.0" prefWidth="175.0" text="Exportar" />
+            <Button fx:id="btnexportar" disable="true" layoutX="416.0" layoutY="313.0" mnemonicParsing="false" onMouseClicked="#exportarDatos" prefHeight="51.0" prefWidth="175.0" text="Exportar" />
          </children></Pane>
     </children>
 </GridPane>

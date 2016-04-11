@@ -3,6 +3,23 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 
+sourceSets {
+    main{
+        java{
+            srcDir 'src'
+        }
+        resources{
+            srcDir 'src'
+        }
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+}
+
 sourceCompatibility = 1.8
 
 repositories {
@@ -15,4 +32,17 @@ dependencies {
     compile 'org.eclipse.persistence:eclipselink:2.6.3-M1'
     compile 'org.eclipse.persistence:javax.persistence:2.1.1'
     compile 'org.hibernate:hibernate-entitymanager:5.1.0.Final'
+}
+
+
+compileJava.options.encoding = 'UTF-8'
+
+task uberjar(type: Jar, dependsOn: [':compileJava', ':processResources']) {
+    from files(sourceSets.main.output.classesDir)
+    from configurations.runtime.asFileTree.files.collect { zipTree(it) }
+    from sourceSets.main.allSource
+    classifier='sources'
+    manifest {
+        attributes 'Main-Class': 'mario.Main'
+    }
 }

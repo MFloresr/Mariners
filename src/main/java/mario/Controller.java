@@ -106,9 +106,7 @@ public class Controller {
         String linea;
         while((linea=br.readLine())!=null){
             comas=0;
-            System.out.println(linea);
             for(int i=0;i<linea.length();i++){
-                System.out.println(linea.charAt(i));
                 if(linea.charAt(i)==','){
                     comas = comas+1;
                 }
@@ -118,7 +116,6 @@ public class Controller {
             }if(comas==3){
                 tripusfalsos.add(linea);
             }
-            System.out.println(comas);
         }
         crearListaNombres(archivoEscogido);
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("MarinersUnit");
