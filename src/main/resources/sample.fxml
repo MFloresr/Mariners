@@ -20,20 +20,22 @@
     <children>
         <Pane prefHeight="378.0" prefWidth="612.0">
          <children>
-            <Label layoutX="57.0" layoutY="63.0" text="Vaixells" />
-            <Label layoutX="232.0" layoutY="63.0" text="Mariners" />
-            <Label layoutX="424.0" layoutY="63.0" text="Capita" />
-            <Label layoutX="424.0" layoutY="162.0" text="Caps de colla" />
-            <ListView fx:id="listVaixells" layoutX="57.0" layoutY="86.0" prefHeight="200.0" prefWidth="149.0" />
-            <ListView fx:id="listMariners" layoutX="232.0" layoutY="86.0" prefHeight="200.0" prefWidth="149.0" />
-            <ListView fx:id="listColles" layoutX="424.0" layoutY="189.0" prefHeight="97.0" prefWidth="149.0" />
-            <Button fx:id="btndades" layoutX="55.0" layoutY="311.0" mnemonicParsing="false" onMouseClicked="#carregarDades" prefHeight="51.0" prefWidth="328.0" text="Carregar Dades" />
-            <TextField layoutX="424.0" layoutY="86.0" />
+            <Label layoutX="35.0" layoutY="63.0" text="Vaixells" />
+            <Label layoutX="206.0" layoutY="63.0" text="Mariners" />
+            <Label layoutX="407.0" layoutY="63.0" text="Capita" />
+            <Label layoutX="405.0" layoutY="136.0" text="Caps de colla" />
+            <ListView fx:id="listVaixells" disable="true" layoutX="35.0" layoutY="86.0" prefHeight="200.0" prefWidth="149.0" />
+            <ListView fx:id="listMariners" disable="true" layoutX="206.0" layoutY="86.0" prefHeight="200.0" prefWidth="175.0" />
+            <ListView fx:id="listCaps" disable="true" layoutX="407.0" layoutY="161.0" prefHeight="124.0" prefWidth="184.0" />
+            <Button fx:id="btndades" layoutX="35.0" layoutY="313.0" mnemonicParsing="false" onMouseClicked="#carregarDades" prefHeight="51.0" prefWidth="175.0" text="Carregar Dades" />
+            <TextField fx:id="textCapita" disable="true" layoutX="404.0" layoutY="86.0" prefHeight="25.0" prefWidth="184.0" />
             <Label layoutX="206.0" layoutY="16.0" prefHeight="38.0" prefWidth="218.0" text="Tripulacions de vaixells">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
+            <Button fx:id="btnimportar" layoutX="228.0" layoutY="313.0" mnemonicParsing="false" onMouseClicked="#importarDatos" prefHeight="51.0" prefWidth="175.0" text="Importar" />
+            <Button fx:id="btnexportar" layoutX="416.0" layoutY="313.0" mnemonicParsing="false" onMouseClicked="#exportarDatos" prefHeight="51.0" prefWidth="175.0" text="Exportar" />
          </children></Pane>
     </children>
 </GridPane>

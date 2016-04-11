@@ -20,19 +20,10 @@ public class Main extends Application {
         GridPane root = FXMLLoader.load(getClass().getResource("/sample.fxml"));
         Scene sc = new Scene(root);
         primaryStage.setScene(sc);
-        primaryStage.setTitle("Rèptils amfibis de Catalunya");
+        primaryStage.setTitle("Carrega Mariners");
         primaryStage.show();
     }
     public static void main(String[] args) {
         launch(args);
-
     }
-/*      Tripulant tripulant = new Tripulant();
-        tripulant.setDni("34523L");
-        tripulant.setNom("Mario");
-        tripulant.setRang("Capita");
-
-        e.getTransaction().begin();
-        e.persist(tripulant);
-        e.getTransaction().commit();*/
 }
